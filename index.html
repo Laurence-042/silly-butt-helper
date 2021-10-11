@@ -1,0 +1,38 @@
+<html lang="en">
+
+<head>
+    <title>silly butt helper</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/base.css">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.0.4/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+</head>
+
+<body>
+    <!-- for copy -->
+    <textarea id="copy-helper" style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;"></textarea>
+
+    <div id="demo">
+        <div id="cursor-wrapper" v-if="silly_butt" >
+            <img id="cursor" src="./static/img/mouse.svg">
+            <p id="hint">{{hint}}</p>
+        </div>
+
+        <div id="center-wrapper">
+            <div id="key-input-wrapper">
+                <input id="key-input" v-model="shown_keyword">
+                <button id="search-button" v-if="silly_butt" v-on:click="navigate_to_search">search</button>
+                <button id="search-button" v-else v-on:click="generate_url">help silly butt</button>
+            </div>
+            <p id="silly-url" v-on:click="copy_url">{{url_for_silly_butt}}</p>
+            <input id="search_format-input" v-if="!silly_butt" v-model="search_format">
+        </div>
+    </div>
+
+    <script src="./js/base.js"></script>
+</body>
+
+</html>
